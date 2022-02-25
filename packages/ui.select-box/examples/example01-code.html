@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>1. Basic</title>
+    <link href="./selectBox.css" rel="stylesheet" />
+  </head>
+  <body>
+      <div id="select-box" style="width: 200px"></div>
+
+
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script type="text/javascript" src="../dist/@vmfhrmfoaj-ui/selectbox.js"></script>
+    <script type="text/babel" class="code-js">
+      console.log('before')
+      console.log(new ui.SelectBox({
+        el: document.getElementById('select-box')
+      }))
+      console.log('after')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>1. Basic</title>
+    <link href="./selectBox.css" rel="stylesheet" />
+  </head>
+  <body>
+      <div id="select-box" style="width: 200px">
+        <div class="tui-select-box">
+          <div class="tui-select-box-input" tabindex="0">
+            <p class="tui-select-box-placeholder">Please select an option.</p>
+            <span class="tui-select-box-icon">select</span>
+          </div>
+          
+          <ul class="tui-select-box-dropdown tui-select-box-open">
+            <li data-group-index="0">
+              <span class="tui-select-box-item-group-label">Fruits</span>
+              <ul class="tui-select-box-item-group">
+                <li class="tui-select-box-item" tabindex="-1" data-value="apple" data-index="0">Apple</li>
+                <li class="tui-select-box-item" tabindex="-1" data-value="banana" data-index="1">Banana</li>
+              </ul>
+            </li>
+            <li class="tui-select-box-item" tabindex="-1" data-value="none" data-index="2">The quick brown fox jumps over the lazy dog.</li>
+            <li data-group-index="1">
+              <span class="tui-select-box-item-group-label">Colors</span>
+              <ul class="tui-select-box-item-group">
+                <li class="tui-select-box-item" tabindex="-1" data-value="red" data-index="3">Red</li>
+                <li class="tui-select-box-item" tabindex="-1" data-value="yellow" data-index="4">Yellow</li>
+                <li class="tui-select-box-item tui-select-box-disabled" tabindex="-1" data-value="green" data-index="5">Green</li>
+                <li class="tui-select-box-item tui-select-box-disabled" tabindex="-1" data-value="blue" data-index="6">Blue</li>
+                <li class="tui-select-box-item" tabindex="-1" data-value="purple" data-index="7">Purple</li>
+              </ul>
+            </li>
+          </ul>
+          
+          <select class="tui-select-box-hidden" tabindex="-1">
+            <option label="Please select an option." value=""></option>
+            <optgroup>Fruits
+              <option value="apple" label="Apple"></option>
+              <option value="banana" label="Banana"></option>
+            </optgroup>
+            <option value="none" label="The quick brown fox jumps over the lazy dog."></option>
+            <optgroup>Colors<option value="red" label="Red"></option>
+              <option value="yellow" label="Yellow"></option>
+              <option value="green" label="Green" disabled=""></option>
+              <option value="blue" label="Blue" disabled=""></option>
+              <option value="purple" label="Purple"></option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+
+    <script type="text/javascript" src="../dist/@vmfhrmfoaj-ui/selectbox.js"></script>
+    <script class="code-js">
+    </script>
+  </body>
+</html>
