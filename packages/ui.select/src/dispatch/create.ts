@@ -1,6 +1,12 @@
 import { Store } from '@t/store';
 
-const dispatchMap = {};
+const dispatchMap = {
+  setOpen: function (store: Store, _open: boolean) {
+    // console.log('setOpen', _open);
+    store.open = _open;
+    // console.log('setOpen ed', store.open);
+  },
+};
 
 type DispatchMap = typeof dispatchMap;
 type DispatchFnKeys = keyof DispatchMap;

@@ -30,4 +30,12 @@ export default class implements Select {
 
     this.componentEl = render(<Root store={store} dispatch={dispatch} rootElement={el} />, el);
   }
+
+  public open(): void {
+    this.dispatch('setOpen', true);
+  }
+
+  public close(): void {
+    this.dispatch('setOpen', false);
+  }
 }

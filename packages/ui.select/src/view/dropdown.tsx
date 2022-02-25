@@ -3,16 +3,18 @@ import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
 import { ComponentId } from '@t/store';
 
-interface StoreProps {}
+interface StoreProps {
+  open: boolean;
+}
 
 type Props = StoreProps & DispatchProps;
 
 export class DropdownComp extends Component<Props> {
   private el?: HTMLElement;
 
-  render() {
+  render({ open }: Props) {
     return (
-      <ul class="tui-select-box-dropdown tui-select-box-open">
+      <ul className={open ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}>
         <li data-group-index="0">
           <span class="tui-select-box-item-group-label">Fruits</span>
           <ul class="tui-select-box-item-group">
@@ -62,4 +64,4 @@ export class DropdownComp extends Component<Props> {
   }
 }
 
-export const Dropdown = connect<StoreProps>(({}) => ({}))(DropdownComp);
+export const Dropdown = connect<StoreProps>(({ open }) => ({ open }))(DropdownComp);

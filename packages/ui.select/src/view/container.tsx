@@ -12,12 +12,36 @@ interface OwnProps {
 
 interface StoreProps {
   id: ComponentId;
+  open: boolean;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
 
 export class ContainerComp extends Component<Props> {
   private el?: HTMLElement;
+  private inputEl?: typeof Input;
+
+  public componentDidMount() {
+    // console.log('ContainerComp componentDidMount el : ', this.inputEl);
+    document.addEventListener('click', this.handleClick);
+  }
+
+  private handleClick = (ev: MouseEvent) => {
+    const target = ev.target as HTMLElement;
+    const { open } = this.props;
+    const isInputAreaClicked = this.isParentArea(target, '.tui-select-box-input');
+    const isDopdownAreaClicked = this.isParentArea(target, '.tui-select-box-dropdown');
+
+    if (isInputAreaClicked) {
+      this.props.dispatch('setOpen', !open);
+    } else if (!isInputAreaClicked && !isDopdownAreaClicked && open) {
+      this.props.dispatch('setOpen', false);
+    }
+  };
+
+  private isParentArea(target: HTMLElement, selector: string): boolean {
+    return target.closest(selector) ? true : false;
+  }
 
   render() {
     return (
@@ -35,4 +59,6 @@ export class ContainerComp extends Component<Props> {
   }
 }
 
-export const Container = connect<StoreProps, OwnProps>(({ id }) => ({ id: id }))(ContainerComp);
+export const Container = connect<StoreProps, OwnProps>(({ id, open }) => ({ id: id, open }))(
+  ContainerComp
+);

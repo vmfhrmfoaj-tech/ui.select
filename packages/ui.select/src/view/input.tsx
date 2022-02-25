@@ -3,16 +3,26 @@ import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
 import { ComponentId } from '@t/store';
 
-interface StoreProps {}
+interface StoreProps {
+  open: boolean;
+}
 
 type Props = StoreProps & DispatchProps;
 
 export class InputComp extends Component<Props> {
   private el?: HTMLElement;
 
-  render() {
+  public componentDidMount() {}
+
+  render({ open }: Props) {
     return (
-      <div class="tui-select-box-input" tabIndex={0}>
+      <div
+        ref={(el) => {
+          this.el = el;
+        }}
+        className={open ? 'tui-select-box-input tui-select-box-open' : 'tui-select-box-input'}
+        tabIndex={0}
+      >
         <p class="tui-select-box-placeholder">Please select an option.</p>
         <span class="tui-select-box-icon">select</span>
       </div>
@@ -20,4 +30,4 @@ export class InputComp extends Component<Props> {
   }
 }
 
-export const Input = connect<StoreProps>(({}) => ({}))(InputComp);
+export const Input = connect<StoreProps>(({ open }) => ({ open }))(InputComp);

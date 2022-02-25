@@ -1,9 +1,11 @@
 import { Store } from '@t/store';
 import { observable, observe } from '../helper/observable';
+import { SelectOptions } from '@t/options';
 
-export function createStore(id: number, options: any): Store {
+export function createStore(id: number, options: SelectOptions): Store {
   const store = observable({
     id,
+    open: options.open ?? false,
   });
 
   /*
