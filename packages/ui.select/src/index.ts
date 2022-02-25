@@ -1,4 +1,4 @@
-import SelectBox from './component';
-// import './css/selectbox.css';
+import Component from './component';
+import './css/select.css';
 
-export = SelectBox;
+export = Component;

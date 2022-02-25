@@ -35,7 +35,7 @@ const commonConfig = {
     },
   },
   output: {
-    library: ['ui', 'SelectBox'],
+    library: ['ui', 'Select'],
     libraryTarget: 'umd',
     filename: `${package.name + (minify ? '.min' : '')}.js`,
     publicPath: '/dist',

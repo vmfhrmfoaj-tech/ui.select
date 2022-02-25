@@ -1,5 +1,5 @@
 import { h, render } from 'preact';
-import SelectBox from '@t/index';
+import Select from '@t/index';
 import { Root } from './view/root';
 import { Store } from '../types/store';
 import { createStore } from './store/create';
@@ -10,7 +10,7 @@ if ((module as any).hot) {
   require('preact/devtools');
 }
 
-export default class implements SelectBox {
+export default class implements Select {
   el: HTMLElement;
 
   private store: Store;

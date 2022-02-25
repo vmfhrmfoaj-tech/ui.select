@@ -2,13 +2,13 @@
   "name": "root",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vmfhrmfoaj-lab/ui.selectbox.git"
+    "url": "https://github.com/vmfhrmfoaj-tech/ui.select.git"
   },
   "devDependencies": {
     "lerna": "^4.0.0",
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "build": "lerna run build --scope @vmfhrmfoaj-ui/selectbox"
+    "build": "lerna run build --scope @vmfhrmfoaj/ui.select"
   }
 }

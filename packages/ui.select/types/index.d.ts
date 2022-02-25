@@ -1,7 +1,7 @@
-declare namespace vui {
-  export class SelectBox {
+declare namespace ui {
+  export class Select {
     constructor(option: any);
   }
 }
 
-export default vui.SelectBox;
+export default ui.Select;
