@@ -1,6 +1,6 @@
 declare namespace vui {
   export class SelectBox {
-    constructor(optGrid: any);
+    constructor(option: any);
   }
 }
 

@@ -5,8 +5,8 @@ interface Obj {
 type OmitedKey<T, K extends keyof T> = keyof Omit<T, K>;
 type PickedKey<T, K extends keyof T> = keyof Pick<T, K>;
 
-const CUSTOM_LF_SUBCHAR = '___tui_grid_lf___';
-const CUSTOM_CR_SUBCHAR = '___tui_grid_cr___';
+const CUSTOM_LF_SUBCHAR = '___vui_selectbox_lf___';
+const CUSTOM_CR_SUBCHAR = '___vui_selectbox_cr___';
 const LF = '\n';
 const CR = '\r';
 const CUSTOM_LF_REGEXP = new RegExp(CUSTOM_LF_SUBCHAR, 'g');

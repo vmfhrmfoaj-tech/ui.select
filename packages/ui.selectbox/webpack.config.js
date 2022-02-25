@@ -46,7 +46,7 @@ module.exports = (env, { mode }) => {
   if (mode === 'production') {
     const { version, author, license } = package;
     const banner = [
-      `TOAST UI Grid`,
+      `vmfhrmfoaj UI SELECT BOX`,
       `@version ${version} | ${new Date().toDateString()}`,
       `@author ${author}`,
       `@license ${license}`,
@@ -63,31 +63,12 @@ module.exports = (env, { mode }) => {
         rules: [
           {
             test: /\.css$/,
-            exclude: /node_modules(?!\/@toast-ui\/select-box)/,
+            exclude: /node_modules(?!\/@vmfhrmfoaj\/ui.selectbox)/,
             use: [MiniCssExtractPlugin.loader, 'css-loader'],
           },
         ],
       },
-      externals: {
-        // 'tui-pagination': {
-        //   commonjs: 'tui-pagination',
-        //   commonjs2: 'tui-pagination',
-        //   amd: 'tui-pagination',
-        //   root: ['tui', 'Pagination'],
-        // },
-        // 'tui-date-picker': {
-        //   commonjs: 'tui-date-picker',
-        //   commonjs2: 'tui-date-picker',
-        //   amd: 'tui-date-picker',
-        //   root: ['tui', 'DatePicker'],
-        // },
-        // xlsx: {
-        //   commonjs: 'xlsx',
-        //   commonjs2: 'xlsx',
-        //   amd: 'xlsx',
-        //   root: 'XLSX',
-        // },
-      },
+      externals: {},
       optimization: {
         minimize: false,
       },
@@ -103,7 +84,7 @@ module.exports = (env, { mode }) => {
                 warnings: true,
               },
               output: {
-                comments: /TOAST UI Grid/i,
+                comments: /vmfhrmfoaj UI SELECT BOX/i,
               },
             },
           }),

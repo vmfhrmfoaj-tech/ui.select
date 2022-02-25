@@ -1,8 +1,8 @@
 {
-  "name": "@vmfhrmfoaj-ui/selectbox",
+  "name": "@vmfhrmfoaj/ui.selectbox",
   "version": "0.0.1",
   "description": "UI SELECT BOX",
-  "main": "dist/ui.select-box.js",
+  "main": "dist/@vmfhrmfoaj/ui.selectbox.js",
   "types": "types/index.d.ts",
   "scripts": {
     "check-types": "tsc",
@@ -20,19 +20,17 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "ts2js": "tsc --outDir tmpdoc --sourceMap false --target ES2015 --noEmit false",
-    "doc:dev": "npm run ts2js && tuidoc --serv",
-    "doc": "npm run ts2js && tuidoc",
     "publish:cdn": "node scripts/publishToCDN.js",
     "update:wrapper": "node scripts/wrapperUpdate.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vmfhrmfoaj-lab/ui.select-box.git"
+    "url": "https://github.com/vmfhrmfoaj-tech/ui.selectbox.git"
   },
   "keywords": [
     "vmfhrmfoaj",
     "component",
-    "select-box"
+    "selectbox"
   ],
   "files": [
     "dist",
@@ -57,7 +55,6 @@
     "dotenv": "^8.2.0",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-tui": "^3.0.0",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.12.4",

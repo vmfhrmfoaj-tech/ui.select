@@ -1,4 +1,4 @@
 import SelectBox from './component';
-// import './css/grid.css';
+// import './css/selectbox.css';
 
 export = SelectBox;

@@ -10,7 +10,7 @@ if ((module as any).hot) {
   require('preact/devtools');
 }
 
-export default class Grid implements SelectBox {
+export default class implements SelectBox {
   el: HTMLElement;
 
   private store: Store;
