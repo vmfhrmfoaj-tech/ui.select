@@ -1,5 +1,5 @@
 import { Store } from '@t/store';
-import { observable, observe } from '../helper/observable';
+import { observable } from '../helper/observable';
 import { SelectOptions } from '@t/options';
 
 export function createStore(id: number, options: SelectOptions): Store {

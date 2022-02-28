@@ -1,8 +1,8 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { ComponentId } from '@t/store';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface StoreProps {}
 
 type Props = StoreProps & DispatchProps;
@@ -32,4 +32,5 @@ export class HiddenSelectComp extends Component<Props> {
   }
 }
 
+// eslint-disable-next-line no-empty-pattern
 export const HiddenSelect = connect<StoreProps>(({}) => ({}))(HiddenSelectComp);

@@ -7,6 +7,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['prettier', 'react', '@typescript-eslint'],
   extends: [
+    'tui/es6',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:react/recommended',

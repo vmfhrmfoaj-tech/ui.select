@@ -19,6 +19,7 @@ type Props = OwnProps & StoreProps & DispatchProps;
 
 export class ContainerComp extends Component<Props> {
   private el?: HTMLElement;
+
   private inputEl?: typeof Input;
 
   public componentDidMount() {
@@ -40,7 +41,7 @@ export class ContainerComp extends Component<Props> {
   };
 
   private isParentArea(target: HTMLElement, selector: string): boolean {
-    return target.closest(selector) ? true : false;
+    return !!target.closest(selector);
   }
 
   render() {
@@ -59,6 +60,6 @@ export class ContainerComp extends Component<Props> {
   }
 }
 
-export const Container = connect<StoreProps, OwnProps>(({ id, open }) => ({ id: id, open }))(
+export const Container = connect<StoreProps, OwnProps>(({ id, open }) => ({ id, open }))(
   ContainerComp
 );

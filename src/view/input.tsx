@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { ComponentId } from '@t/store';
 
 interface StoreProps {
   open: boolean;
@@ -12,7 +11,7 @@ type Props = StoreProps & DispatchProps;
 export class InputComp extends Component<Props> {
   private el?: HTMLElement;
 
-  public componentDidMount() {}
+  // public componentDidMount() {}
 
   render({ open }: Props) {
     return (

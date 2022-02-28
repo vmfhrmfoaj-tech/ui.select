@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { ComponentId } from '@t/store';
 
 interface StoreProps {
   open: boolean;
