@@ -34,6 +34,7 @@
   "author": "vmfhrmfoaj<vmfhrmfoaj@nate.com>",
   "license": "MIT",
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.11.1",
     "@types/node": "^12.0.0",
     "@types/webpack-env": "^1.13.8",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
