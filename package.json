@@ -1,14 +1,60 @@
 {
-  "name": "root",
+  "name": "@vmfhrmfoaj/ui.select",
+  "version": "0.0.1",
+  "description": "UI SELECT BOX",
+  "main": "dist/@vmfhrmfoaj/ui.select.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "check-types": "tsc",
+    "check-types:all": "tsc --project ./tsconfig-build.json",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:all": "eslint src --ext .ts,.tsx",
+    "dev": "npm run check-types && npm run lint && webpack-dev-server --mode=development",
+    "build": "npm run check-types:all && npm run lint:all && (webpack --mode=production & webpack --mode=production --minify) && node ./scripts/tsBannerGenerator.js",
+    "test-server": "webpack-dev-server",
+    "ts2js": "tsc --outDir tmpdoc --sourceMap false --target ES2015 --noEmit false"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/vmfhrmfoaj-tech/ui.select.git"
   },
+  "keywords": [
+    "vmfhrmfoaj",
+    "component",
+    "select"
+  ],
+  "files": [
+    "dist",
+    "types"
+  ],
+  "author": "vmfhrmfoaj<vmfhrmfoaj@nate.com>",
+  "license": "MIT",
   "devDependencies": {
-    "lerna": "^4.0.0",
-    "prettier": "^2.0.5"
-  },
-  "scripts": {
-    "build": "lerna run build --scope @vmfhrmfoaj/ui.select"
+    "@types/node": "^12.0.0",
+    "@types/webpack-env": "^1.13.8",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "css-loader": "^2.1.1",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-tui": "^3.0.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.12.4",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "preact": "^8.4.2",
+    "prettier": "^2.0.5",
+    "start-server-and-test": "^1.10.0",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.2.3",
+    "ts-loader": "^6.2.1",
+    "tslib": "^1.11.1",
+    "typescript": "^3.9.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.1"
   }
 }

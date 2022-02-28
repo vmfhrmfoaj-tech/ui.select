@@ -16,6 +16,7 @@ export class Root extends Component<Props> {
       dispatch: this.props.dispatch,
     };
   }
+
   public render() {
     // return <Container rootElement={this.props.rootElement} />;
     return <Container rootElement={this.props.rootElement} />;

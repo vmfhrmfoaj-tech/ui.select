@@ -16,6 +16,7 @@ export default class implements Select {
   private store: Store;
 
   private componentEl: Element;
+
   private dispatch: Dispatch;
 
   public constructor(options: any) {

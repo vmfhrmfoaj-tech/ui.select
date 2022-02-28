@@ -1,7 +1,7 @@
 import { Store } from '@t/store';
 
 const dispatchMap = {
-  setOpen: function (store: Store, _open: boolean) {
+  setOpen: (store: Store, _open: boolean) => {
     // console.log('setOpen', _open);
     store.open = _open;
     // console.log('setOpen ed', store.open);
