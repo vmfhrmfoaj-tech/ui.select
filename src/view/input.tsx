@@ -2,24 +2,29 @@ import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface OwnProps {}
+
 interface StoreProps {
-  open: boolean;
+  isOpen: boolean;
 }
 
-type Props = StoreProps & DispatchProps;
+type Props = OwnProps & StoreProps & DispatchProps;
 
 export class InputComp extends Component<Props> {
   private el?: HTMLElement;
 
   // public componentDidMount() {}
 
-  render({ open }: Props) {
+  render({ isOpen }: Props) {
+    const className = ['tui-select-box-input', isOpen ? 'tui-select-box-open' : ''].join(' ');
+
     return (
       <div
         ref={(el) => {
           this.el = el;
         }}
-        className={open ? 'tui-select-box-input tui-select-box-open' : 'tui-select-box-input'}
+        className={className}
         tabIndex={0}
       >
         <p class="tui-select-box-placeholder">Please select an option.</p>
@@ -29,4 +34,6 @@ export class InputComp extends Component<Props> {
   }
 }
 
-export const Input = connect<StoreProps>(({ open }) => ({ open }))(InputComp);
+export const Input = connect<StoreProps, OwnProps>(({ renderState }) => ({
+  isOpen: renderState.isOpen,
+}))(InputComp);

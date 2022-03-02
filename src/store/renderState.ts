@@ -1,5 +1,7 @@
+import { SelectOptions } from '@t/options';
 import { observable } from '../helper/observable';
 
-export function create() {
-  return observable({ hoveredKey: null });
+export function create(options: SelectOptions) {
+  const isOpen = options.isOpen ?? false;
+  return observable({ hoveredKey: null, isOpen });
 }

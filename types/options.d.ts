@@ -6,6 +6,6 @@ export interface Dictionary<T> {
 
 export interface SelectOptions {
   el: HTMLElement;
-  open?: boolean;
+  isOpen?: boolean;
   options?: OptionsType;
 }

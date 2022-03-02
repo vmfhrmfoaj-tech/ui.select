@@ -3,11 +3,6 @@ import * as renderState from './renderState';
 
 const dispatchMap = {
   ...renderState,
-  setOpen: (store: Store, _open: boolean) => {
-    // console.log('setOpen', _open);
-    store.open = _open;
-    // console.log('setOpen ed', store.open);
-  },
 };
 
 type DispatchMap = typeof dispatchMap;

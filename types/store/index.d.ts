@@ -12,6 +12,5 @@ export type OptionsType = OptionType[];
 export interface Store {
   readonly id: ComponentId;
   renderState: RenderState;
-  open: boolean;
   options: OptionsType;
 }

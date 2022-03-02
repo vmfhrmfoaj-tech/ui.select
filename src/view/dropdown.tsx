@@ -6,9 +6,9 @@ import { Option } from './option';
 import { RenderState } from '@t/store/renderState';
 
 interface StoreProps {
-  open: boolean;
   renderState: RenderState;
   options: OptionsType;
+  isOpen: boolean;
 }
 
 type Props = StoreProps & DispatchProps;
@@ -47,10 +47,10 @@ export class DropdownComp extends Component<Props> {
     }
   };
 
-  render({ open, options }: Props) {
+  render({ isOpen, options }: Props) {
     return (
       <ul
-        className={open ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}
+        className={isOpen ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}
         onMouseOver={this.handleMouseover}
         onMouseOut={this.handleMouseout}
       >
@@ -62,8 +62,8 @@ export class DropdownComp extends Component<Props> {
   }
 }
 
-export const Dropdown = connect<StoreProps>(({ open, renderState, options }) => ({
-  open,
+export const Dropdown = connect<StoreProps>(({ renderState, options }) => ({
   renderState,
   options,
+  isOpen: renderState.isOpen,
 }))(DropdownComp);
