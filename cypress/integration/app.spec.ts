@@ -70,4 +70,22 @@ describe('className', () => {
     dropdown.should('have.class', 'tui-select-box-hidden');
     dropdown.should('not.have.class', 'tui-select-box-dropdown');
   });
+
+  it('hover layer option', () => {
+    const inputEl = getChildEl('div').eq(0);
+    inputEl.click();
+
+    const liElement = getChildEl('ul').children('li').eq(0);
+
+    liElement.should('have.class', 'tui-select-box-item');
+    liElement.should('not.have.class', 'tui-select-box-highlight');
+
+    liElement.trigger('mouseover');
+    liElement.should('have.class', 'tui-select-box-highlight');
+
+    const li2Element = getChildEl('ul').children('li').eq(1);
+
+    li2Element.trigger('mouseover');
+    li2Element.should('have.class', 'tui-select-box-highlight');
+  });
 });

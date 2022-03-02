@@ -8,14 +8,20 @@ interface OwnProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface StoreProps {}
+interface StoreProps {
+  hoveredKey: string | null;
+}
 
 type Props = OwnProps & StoreProps & DispatchProps;
 
 export class OptionComp extends Component<Props> {
-  render({ option }: Props) {
+  render({ option, hoveredKey }: Props) {
+    const classNames = [
+      'tui-select-box-item',
+      hoveredKey === option.value ? 'tui-select-box-highlight' : '',
+    ];
     return (
-      <li class="tui-select-box-item" tab-index="-1" data-value={option.value}>
+      <li class={classNames.join(' ')} tab-index="-1" data-value={option.value}>
         {option.text}
       </li>
     );
@@ -23,4 +29,6 @@ export class OptionComp extends Component<Props> {
 }
 
 // eslint-disable-next-line no-empty-pattern
-export const Option = connect<StoreProps, OwnProps>(({}) => ({}))(OptionComp);
+export const Option = connect<StoreProps, OwnProps>(({ renderState }) => ({
+  hoveredKey: renderState.hoveredKey,
+}))(OptionComp);
