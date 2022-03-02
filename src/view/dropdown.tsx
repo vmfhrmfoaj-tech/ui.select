@@ -1,66 +1,69 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
+import { OptionsType } from '@t/store';
+import { Option } from './option';
+import { RenderState } from '@t/store/renderState';
 
 interface StoreProps {
-  open: boolean;
+  renderState: RenderState;
+  options: OptionsType;
+  isOpen: boolean;
 }
 
 type Props = StoreProps & DispatchProps;
 
 export class DropdownComp extends Component<Props> {
-  private el?: HTMLElement;
+  private getHoveredKey(el: HTMLElement) {
+    const liEl = el.closest('li');
 
-  render({ open }: Props) {
+    if (!liEl) {
+      return null;
+    }
+
+    const hoveredKey = liEl.getAttribute('data-value');
+
+    if (hoveredKey === null) {
+      return null;
+    }
+
+    return hoveredKey;
+  }
+
+  private handleMouseover = (event: MouseEvent) => {
+    const { dispatch } = this.props;
+    const key = this.getHoveredKey(event.target as HTMLElement);
+    if (key !== null) {
+      dispatch('setHoveredKey', key);
+    }
+  };
+
+  private handleMouseout = () => {
+    const { dispatch, renderState } = this.props;
+    const { hoveredKey } = renderState;
+
+    if (hoveredKey !== null) {
+      dispatch('setHoveredKey', null);
+    }
+  };
+
+  render({ isOpen, options }: Props) {
     return (
-      <ul className={open ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}>
-        <li data-group-index="0">
-          <span class="tui-select-box-item-group-label">Fruits</span>
-          <ul class="tui-select-box-item-group">
-            <li class="tui-select-box-item" tabIndex={-1} data-value="apple" data-index="0">
-              Apple
-            </li>
-            <li class="tui-select-box-item" tabIndex={-1} data-value="banana" data-index="1">
-              Banana
-            </li>
-          </ul>
-        </li>
-        <li class="tui-select-box-item" tabIndex={-1} data-value="none" data-index="2">
-          The quick brown fox jumps over the lazy dog.
-        </li>
-        <li data-group-index="1">
-          <span class="tui-select-box-item-group-label">Colors</span>
-          <ul class="tui-select-box-item-group">
-            <li class="tui-select-box-item" tabIndex={-1} data-value="red" data-index="3">
-              Red
-            </li>
-            <li class="tui-select-box-item" tabIndex={-1} data-value="yellow" data-index="4">
-              Yellow
-            </li>
-            <li
-              class="tui-select-box-item tui-select-box-disabled"
-              tabIndex={-1}
-              data-value="green"
-              data-index="5"
-            >
-              Green
-            </li>
-            <li
-              class="tui-select-box-item tui-select-box-disabled"
-              tabIndex={-1}
-              data-value="blue"
-              data-index="6"
-            >
-              Blue
-            </li>
-            <li class="tui-select-box-item" tabIndex={-1} data-value="purple" data-index="7">
-              Purple
-            </li>
-          </ul>
-        </li>
+      <ul
+        className={isOpen ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}
+        onMouseOver={this.handleMouseover}
+        onMouseOut={this.handleMouseout}
+      >
+        {options.map((option, index) => (
+          <Option key={index} option={option} />
+        ))}
       </ul>
     );
   }
 }
 
-export const Dropdown = connect<StoreProps>(({ open }) => ({ open }))(DropdownComp);
+export const Dropdown = connect<StoreProps>(({ renderState, options }) => ({
+  renderState,
+  options,
+  isOpen: renderState.isOpen,
+}))(DropdownComp);

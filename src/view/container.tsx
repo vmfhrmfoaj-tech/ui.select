@@ -5,6 +5,7 @@ import { ComponentId } from '@t/store';
 import { Input } from './input';
 import { Dropdown } from './dropdown';
 import { HiddenSelect } from './hiddenselect';
+import { RenderState } from '@t/store/renderState';
 
 interface OwnProps {
   rootElement: HTMLElement;
@@ -12,7 +13,7 @@ interface OwnProps {
 
 interface StoreProps {
   id: ComponentId;
-  open: boolean;
+  renderState: RenderState;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -29,14 +30,14 @@ export class ContainerComp extends Component<Props> {
 
   private handleClick = (ev: MouseEvent) => {
     const target = ev.target as HTMLElement;
-    const { open } = this.props;
+    const { renderState, dispatch } = this.props;
     const isInputAreaClicked = this.isParentArea(target, '.tui-select-box-input');
     const isDopdownAreaClicked = this.isParentArea(target, '.tui-select-box-dropdown');
 
     if (isInputAreaClicked) {
-      this.props.dispatch('setOpen', !open);
+      dispatch('setOpen', !renderState.isOpen);
     } else if (!isInputAreaClicked && !isDopdownAreaClicked && open) {
-      this.props.dispatch('setOpen', false);
+      dispatch('setOpen', false);
     }
   };
 
@@ -60,6 +61,7 @@ export class ContainerComp extends Component<Props> {
   }
 }
 
-export const Container = connect<StoreProps, OwnProps>(({ id, open }) => ({ id, open }))(
-  ContainerComp
-);
+export const Container = connect<StoreProps, OwnProps>(({ id, renderState }) => ({
+  id,
+  renderState,
+}))(ContainerComp);

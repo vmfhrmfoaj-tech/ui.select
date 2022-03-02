@@ -1,11 +1,15 @@
 import { Store } from '@t/store';
 import { observable } from '../helper/observable';
 import { SelectOptions } from '@t/options';
+import { create as createRenderState } from './renderState';
 
 export function createStore(id: number, options: SelectOptions): Store {
+  const renderState = createRenderState(options);
+
   const store = observable({
     id,
-    open: options.open ?? false,
+    renderState,
+    options: options.options ?? [],
   });
 
   /*

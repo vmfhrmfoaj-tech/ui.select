@@ -1,11 +1,8 @@
 import { Store } from '@t/store';
+import * as renderState from './renderState';
 
 const dispatchMap = {
-  setOpen: (store: Store, _open: boolean) => {
-    // console.log('setOpen', _open);
-    store.open = _open;
-    // console.log('setOpen ed', store.open);
-  },
+  ...renderState,
 };
 
 type DispatchMap = typeof dispatchMap;
