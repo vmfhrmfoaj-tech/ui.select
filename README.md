@@ -35,3 +35,6 @@ $ npm run e2e-test
 ## 📜 License
 
 This software is licensed under the [MIT](https://github.com/vmfhrmfoaj-tech/ui.select/blob/main/LICENSE) © [vmfhrmfoaj](https://github.com/vmfhrmfoaj-tech).
+
+## Based on
+This project Develop env is based on [TOAST UI Grid](https://github.com/nhn/tui.grid)
