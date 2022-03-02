@@ -23,3 +23,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('createComponent', (options, containerStyle = {}, parentEl = null) => {
+  cy.document().then((doc) => {
+    doc.body.innerHTML = '';
+  });
+  return cy.window().then((win) => {
+    const { document, ui } = win;
+    const el = document.createElement('div');
+    const styles = { width: '200px', ...containerStyle };
+
+    if (parentEl) {
+      parentEl.appendChild(el);
+      document.body.appendChild(parentEl);
+      cy.wait(10);
+    } else {
+      Object.assign(el.style, styles);
+      document.body.appendChild(el);
+    }
+
+    win.component = new ui.Select({ el, ...options });
+
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        resolve(win.component);
+      });
+    });
+  });
+});
