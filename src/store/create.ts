@@ -6,6 +6,7 @@ export function createStore(id: number, options: SelectOptions): Store {
   const store = observable({
     id,
     open: options.open ?? false,
+    options: options.options ?? [],
   });
 
   /*

@@ -13,7 +13,11 @@
     <script type="text/javascript" src="../dist/@vmfhrmfoaj/ui.select.js"></script>
     <script type="text/babel" class="code-js">
       const instance = new ui.Select({
-        el: document.getElementById('select-box')
+        el: document.getElementById('select-box'),
+        options: [
+          { value: 'apple', text: 'Apple' },
+          { value: 'banana', text: 'Banana' },
+        ]
       });
     </script>
   </body>

@@ -4,8 +4,13 @@ before(() => {
 });
 
 describe('className', () => {
+  const options = [
+    { value: 'apple', text: 'Apple' },
+    { value: 'banana', text: 'Banana' },
+  ];
+
   beforeEach(() => {
-    cy.createComponent({});
+    cy.createComponent({ options });
   });
 
   const getChildEl = (selector: string) => cy.get(`div.tui-select-box > ${selector}`);
@@ -23,6 +28,14 @@ describe('className', () => {
     const select = getChildEl('select');
     select.should('have.length', '1');
     select.eq(0).should('have.class', 'tui-select-box-hidden');
+  });
+
+  it('component initialize(array type data option)', () => {
+    const itemLayers = getChildEl('ul').children('li');
+    itemLayers.should('have.length', '2');
+
+    const items = getChildEl('select').children('option');
+    items.should('have.length', '2');
   });
 
   it('open layer', () => {

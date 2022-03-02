@@ -1,36 +1,24 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
+import { OptionsType } from '@t/store';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface StoreProps {}
+interface StoreProps {
+  options: OptionsType;
+}
 
 type Props = StoreProps & DispatchProps;
 
 export class HiddenSelectComp extends Component<Props> {
-  private el?: HTMLElement;
-
-  render() {
+  render({ options }: Props) {
     return (
       <select class="tui-select-box-hidden" tabIndex={-1}>
-        <option label="Please select an option." value=""></option>
-        <optgroup>
-          Fruits
-          <option value="apple" label="Apple"></option>
-          <option value="banana" label="Banana"></option>
-        </optgroup>
-        <option value="none" label="The quick brown fox jumps over the lazy dog."></option>
-        <optgroup>
-          Colors<option value="red" label="Red"></option>
-          <option value="yellow" label="Yellow"></option>
-          <option value="green" label="Green" disabled={true}></option>
-          <option value="blue" label="Blue" disabled={true}></option>
-          <option value="purple" label="Purple"></option>
-        </optgroup>
+        {options.map((item, index) => (
+          <option key={index} label={item.text} value={item.value}></option>
+        ))}
       </select>
     );
   }
 }
 
-// eslint-disable-next-line no-empty-pattern
-export const HiddenSelect = connect<StoreProps>(({}) => ({}))(HiddenSelectComp);
+export const HiddenSelect = connect<StoreProps>(({ options }) => ({ options }))(HiddenSelectComp);
