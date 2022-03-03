@@ -19,7 +19,7 @@ interface StoreProps {
 type Props = OwnProps & StoreProps & DispatchProps;
 
 export class ContainerComp extends Component<Props> {
-  private el?: HTMLElement;
+  private el?: HTMLDivElement | null;
 
   private inputEl?: typeof Input;
 
