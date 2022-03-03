@@ -5,17 +5,10 @@ import { Store } from '../types/store';
 import { createStore } from './store/create';
 import { Dispatch, createDispatcher } from './dispatch/create';
 
-/* eslint-disable global-require */
-if ((module as any).hot) {
-  require('preact/devtools');
-}
-
 export default class implements Select {
   el: HTMLElement;
 
   private store: Store;
-
-  private componentEl: Element;
 
   private dispatch: Dispatch;
 
@@ -29,7 +22,7 @@ export default class implements Select {
     this.store = store;
     this.dispatch = dispatch;
 
-    this.componentEl = render(<Root store={store} dispatch={dispatch} rootElement={el} />, el);
+    render(<Root store={store} dispatch={dispatch} rootElement={el} />, el);
   }
 
   public open(): void {

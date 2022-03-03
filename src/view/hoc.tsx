@@ -1,4 +1,4 @@
-import { h, AnyComponent, Component } from 'preact';
+import { h, ComponentType, Component } from 'preact';
 import { Store } from '@t/store';
 import { observe } from '../helper/observable';
 import { DispatchProps } from '../dispatch/create';
@@ -9,7 +9,7 @@ export function connect<SelectedProps = {}, OwnProps = {}>(
 ) {
   type Props = OwnProps & SelectedProps & DispatchProps;
 
-  return function (WrappedComponent: AnyComponent<Props>) {
+  return function (WrappedComponent: ComponentType<Props>) {
     return class extends Component<OwnProps, SelectedProps> {
       public static displayName = `Connect:${WrappedComponent.name}`;
 
