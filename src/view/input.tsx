@@ -12,7 +12,7 @@ interface StoreProps {
 type Props = OwnProps & StoreProps & DispatchProps;
 
 export class InputComp extends Component<Props> {
-  private el?: HTMLElement;
+  private el?: HTMLDivElement | null;
 
   // public componentDidMount() {}
 
