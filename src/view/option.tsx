@@ -1,11 +1,11 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { Item } from '@t/store/data';
+import { ItemData } from '@t/store/data';
 import { cls } from '../css/constants';
 
 interface OwnProps {
-  item: Item;
+  item: ItemData;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -42,7 +42,7 @@ export class OptionComp extends Component<Props> {
 }
 
 // eslint-disable-next-line no-empty-pattern
-export const Option = connect<StoreProps, OwnProps>(({ renderState }, { item }) => ({
-  hoveredKey: renderState.hoveredKey,
+export const Option = connect<StoreProps, OwnProps>(({ hoveredKey }, { item }) => ({
+  hoveredKey,
   selected: item.selected,
 }))(OptionComp);

@@ -35,6 +35,6 @@ export class InputComp extends Component<Props> {
   }
 }
 
-export const Input = connect<StoreProps, OwnProps>(({ renderState }) => ({
-  opened: renderState.opened,
+export const Input = connect<StoreProps, OwnProps>(({ opened }) => ({
+  opened,
 }))(InputComp);

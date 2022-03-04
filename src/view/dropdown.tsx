@@ -1,14 +1,12 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { Item } from '@t/store/data';
+import { ItemData } from '@t/store/data';
 import { Option } from './option';
-import { RenderState } from '@t/store';
 import { cls } from '../css/constants';
 
 interface StoreProps {
-  renderState: RenderState;
-  items: Item[];
+  items: ItemData[];
   opened: boolean;
 }
 
@@ -40,12 +38,8 @@ export class DropdownComp extends Component<Props> {
   };
 
   private handleMouseout = () => {
-    const { dispatch, renderState } = this.props;
-    const { hoveredKey } = renderState;
-
-    if (hoveredKey !== null) {
-      dispatch('setHoveredKey', null);
-    }
+    const { dispatch } = this.props;
+    dispatch('setHoveredKey', null);
   };
 
   render({ opened, items }: Props) {
@@ -63,8 +57,7 @@ export class DropdownComp extends Component<Props> {
   }
 }
 
-export const Dropdown = connect<StoreProps>(({ renderState, data }) => ({
-  renderState,
+export const Dropdown = connect<StoreProps>(({ opened, data }) => ({
   items: data.items,
-  opened: renderState.opened,
+  opened,
 }))(DropdownComp);

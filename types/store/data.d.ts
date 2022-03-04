@@ -2,7 +2,7 @@ import { Dictionary } from '@t/options';
 
 export const EMPTY_VALUE = '';
 
-export interface Item {
+export interface ItemData {
   value: string;
   label: string;
   selected: boolean;
@@ -10,6 +10,6 @@ export interface Item {
 
 export interface Data {
   value: string;
-  items: Item[];
-  readonly itemMap: Dictionary<Item>;
+  items: ItemData[];
+  readonly itemMap: Dictionary<ItemData>;
 }

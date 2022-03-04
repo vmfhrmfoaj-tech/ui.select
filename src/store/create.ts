@@ -1,21 +1,18 @@
-import { Store, RenderState } from '@t/store';
+import { Store } from '@t/store';
 import { observable } from '../helper/observable';
 import { SelectOptions } from '@t/options';
 import { create as createOptions } from './data';
 
-function createRenderState(options: SelectOptions) {
+export function createStore(id: number, options: SelectOptions): Store {
+  const hoveredKey = null;
   const opened = options.autofocus ?? false;
-  return observable({ hoveredKey: null, opened } as RenderState);
-}
-
-export function createStore(id: number, _options: SelectOptions): Store {
-  const renderState = createRenderState(_options);
-  const data = createOptions(_options);
+  const data = createOptions(options);
 
   const store = observable({
     id,
-    renderState,
     data,
+    opened,
+    hoveredKey,
   });
 
   /*

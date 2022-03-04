@@ -1,11 +1,11 @@
 import { Store } from '@t/store';
 
-export function setHoveredKey({ renderState }: Store, key: string | null) {
-  renderState.hoveredKey = key;
+export function setHoveredKey(store: Store, key: string | null) {
+  store.hoveredKey = key;
 }
 
-export function setOpen({ renderState }: Store, _open: boolean) {
-  renderState.opened = _open;
+export function setOpen(store: Store, _open: boolean) {
+  store.opened = _open;
 }
 
 export function setValue({ data }: Store, value: string | null) {

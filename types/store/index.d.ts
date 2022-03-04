@@ -4,11 +4,7 @@ export type ComponentId = number;
 
 export interface Store {
   readonly id: ComponentId;
-  renderState: RenderState;
-  data: Data;
-}
-
-export interface RenderState {
   opened: boolean;
+  data: Data;
   hoveredKey: string | null;
 }
