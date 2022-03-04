@@ -43,7 +43,7 @@ export const openStory = () => {
       { value: 'apple', text: 'Apple' },
       { value: 'banana', text: 'Banana' },
     ],
-    isOpen: true,
+    autofocus: true,
   });
 
   return el;
@@ -52,7 +52,7 @@ export const openStory = () => {
 const openNote = `
 ## Default SELECT BOX
 
-- isOpen option(boolean) : false(default) | true
+- autofocus option(boolean) : false(default) | true
 `;
 openStory.story = { parameters: { notes: openNote } };
 
@@ -65,7 +65,7 @@ export const valueOptionStory = () => {
       { value: 'apple', text: 'Apple' },
       { value: 'banana', text: 'Banana' },
     ],
-    isOpen: true,
+    autofocus: true,
     value: 'banana',
   });
 

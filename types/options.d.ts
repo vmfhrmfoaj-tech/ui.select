@@ -6,7 +6,7 @@ export interface Dictionary<T> {
 
 export interface SelectOptions {
   el: HTMLElement;
-  isOpen?: boolean;
+  autofocus?: boolean;
   items?: Item[];
   value?: string;
 }

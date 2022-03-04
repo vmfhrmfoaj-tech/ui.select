@@ -1,11 +1,10 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { ComponentId } from '@t/store';
+import { ComponentId, RenderState } from '@t/store';
 import { Input } from './input';
 import { Dropdown } from './dropdown';
 import { HiddenSelect } from './hiddenselect';
-import { RenderState } from '@t/store/renderState';
 import { cls } from '../css/constants';
 
 interface OwnProps {
@@ -36,7 +35,7 @@ export class ContainerComp extends Component<Props> {
     const isDopdownAreaClicked = this.isParentArea(target, `.${cls.DROPDOWN}`);
 
     if (isInputAreaClicked) {
-      dispatch('setOpen', !renderState.isOpen);
+      dispatch('setOpen', !renderState.opened);
     } else if (!isInputAreaClicked && !isDopdownAreaClicked && open) {
       dispatch('setOpen', false);
     }

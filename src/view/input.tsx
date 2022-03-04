@@ -7,7 +7,7 @@ import { cls } from '../css/constants';
 interface OwnProps {}
 
 interface StoreProps {
-  isOpen: boolean;
+  opened: boolean;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -17,8 +17,8 @@ export class InputComp extends Component<Props> {
 
   // public componentDidMount() {}
 
-  render({ isOpen }: Props) {
-    const className = [cls.INPUT, isOpen ? cls.OPEN : ''].join(' ');
+  render({ opened }: Props) {
+    const className = [cls.INPUT, opened ? cls.OPEN : ''].join(' ');
 
     return (
       <div
@@ -36,5 +36,5 @@ export class InputComp extends Component<Props> {
 }
 
 export const Input = connect<StoreProps, OwnProps>(({ renderState }) => ({
-  isOpen: renderState.isOpen,
+  opened: renderState.opened,
 }))(InputComp);

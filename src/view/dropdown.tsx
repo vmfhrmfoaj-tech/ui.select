@@ -3,13 +3,13 @@ import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
 import { Item } from '@t/store/data';
 import { Option } from './option';
-import { RenderState } from '@t/store/renderState';
+import { RenderState } from '@t/store';
 import { cls } from '../css/constants';
 
 interface StoreProps {
   renderState: RenderState;
   items: Item[];
-  isOpen: boolean;
+  opened: boolean;
 }
 
 type Props = StoreProps & DispatchProps;
@@ -48,10 +48,10 @@ export class DropdownComp extends Component<Props> {
     }
   };
 
-  render({ isOpen, items }: Props) {
+  render({ opened, items }: Props) {
     return (
       <ul
-        className={isOpen ? cls.DROPDOWN : cls.HIDDEN}
+        className={opened ? cls.DROPDOWN : cls.HIDDEN}
         onMouseOver={this.handleMouseover}
         onMouseOut={this.handleMouseout}
       >
@@ -66,5 +66,5 @@ export class DropdownComp extends Component<Props> {
 export const Dropdown = connect<StoreProps>(({ renderState, data }) => ({
   renderState,
   items: data.items,
-  isOpen: renderState.isOpen,
+  opened: renderState.opened,
 }))(DropdownComp);

@@ -102,9 +102,9 @@ describe('className', () => {
     li2Element.should('have.class', cls.HIGHLIGHT);
   });
 
-  it('isOpen option', () => {
+  it('autofocus option', () => {
     createTestComponent({
-      isOpen: true,
+      autofocus: true,
     });
 
     const dropdown = getChildEl('ul').eq(0);
@@ -114,7 +114,7 @@ describe('className', () => {
 
   it('value option', () => {
     createTestComponent({
-      isOpen: true,
+      autofocus: true,
       value: 'banana',
     });
 
@@ -125,7 +125,7 @@ describe('className', () => {
 
   it('value option', () => {
     createTestComponent({
-      isOpen: true,
+      autofocus: true,
       value: 'banana',
     });
 
