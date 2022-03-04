@@ -12,6 +12,7 @@ interface OwnProps {
 interface StoreProps {
   hoveredKey: string | null;
   selected: boolean;
+  disabled: boolean;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -22,11 +23,13 @@ export class OptionComp extends Component<Props> {
     dispatch('setValue', item.value);
   };
 
-  render({ item, hoveredKey }: Props) {
+  render({ item, hoveredKey, selected, disabled }: Props) {
+    console.log('layer option render');
     const classNames = [
       cls.ITEM,
       hoveredKey === item.value ? cls.HIGHLIGHT : '',
-      item.selected ? cls.SELECTED : '',
+      selected ? cls.SELECTED : '',
+      disabled ? cls.DISABLED : '',
     ];
     return (
       <li
@@ -45,4 +48,5 @@ export class OptionComp extends Component<Props> {
 export const Option = connect<StoreProps, OwnProps>(({ hoveredKey }, { item }) => ({
   hoveredKey,
   selected: item.selected,
+  disabled: item.disabled,
 }))(OptionComp);
