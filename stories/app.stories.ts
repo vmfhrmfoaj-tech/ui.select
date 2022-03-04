@@ -13,15 +13,17 @@ function createContainer(): HTMLElement {
   return el;
 }
 
+const ITEMS = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+];
+
 export const defaultStory = () => {
   const el = createContainer();
 
   new Component({
     el,
-    items: [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
-    ],
+    items: ITEMS,
   });
 
   return el;
@@ -39,10 +41,7 @@ export const openStory = () => {
 
   new Component({
     el,
-    items: [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
-    ],
+    items: ITEMS,
     autofocus: true,
   });
 
@@ -61,10 +60,7 @@ export const valueOptionStory = () => {
 
   new Component({
     el,
-    items: [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
-    ],
+    items: ITEMS,
     autofocus: true,
     value: 'banana',
   });

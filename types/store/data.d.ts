@@ -4,7 +4,7 @@ export const EMPTY_VALUE = '';
 
 export interface Item {
   value: string;
-  text: string;
+  label: string;
   selected: boolean;
 }
 

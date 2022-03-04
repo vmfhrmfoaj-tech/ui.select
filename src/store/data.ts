@@ -4,12 +4,12 @@ import { createMapFromArray } from '../helper/common';
 import { observable } from '../helper/observable';
 
 function createItems(option: SelectOptions) {
-  const newItems = (option.items ?? ([] as Item[])).map(({ value, text, selected = false }) => {
+  const newItems = (option.items ?? ([] as Item[])).map(({ value, label, selected = false }) => {
     const _selected = option.value ? option.value === value : selected;
 
     return observable<Item>({
       value,
-      text,
+      label,
       selected: _selected,
     });
   });

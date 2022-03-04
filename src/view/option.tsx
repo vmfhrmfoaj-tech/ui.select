@@ -35,7 +35,7 @@ export class OptionComp extends Component<Props> {
         data-value={item.value}
         onClick={this.handleClick}
       >
-        {item.text}
+        {item.label}
       </li>
     );
   }

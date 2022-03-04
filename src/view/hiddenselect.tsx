@@ -15,7 +15,7 @@ export class HiddenSelectComp extends Component<Props> {
     return (
       <select class={cls.HIDDEN} tabIndex={-1}>
         {data.items.map((item, index) => (
-          <option key={index} label={item.text} value={item.value}></option>
+          <option key={index} label={item.label} value={item.value}></option>
         ))}
       </select>
     );

@@ -12,8 +12,8 @@ describe('className', () => {
 
   const createTestComponent = (option = {}) => {
     const items = [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
+      { value: 'apple', label: 'Apple' },
+      { value: 'banana', label: 'Banana' },
     ];
     cy.createComponent({ ...option, items });
   };
@@ -40,6 +40,9 @@ describe('className', () => {
     createTestComponent();
     const itemLayers = getChildEl('ul').children('li');
     itemLayers.should('have.length', '2');
+
+    getChildEl('ul').children('li').eq(0).should('have.text', 'Apple');
+    getChildEl('ul').children('li').eq(1).should('have.text', 'Banana');
 
     const items = getChildEl('select').children('option');
     items.should('have.length', '2');
