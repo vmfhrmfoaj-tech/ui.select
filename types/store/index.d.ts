@@ -1,16 +1,10 @@
+import { Data } from './data';
 import { RenderState } from './renderState';
 
 export type ComponentId = number;
 
-export interface OptionType {
-  value: string;
-  text: string;
-}
-
-export type OptionsType = OptionType[];
-
 export interface Store {
   readonly id: ComponentId;
   renderState: RenderState;
-  options: OptionsType;
+  data: Data;
 }

@@ -1,10 +1,10 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { OptionType } from '@t/store';
+import { Item } from '@t/store/data';
 
 interface OwnProps {
-  option: OptionType;
+  item: Item;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -15,14 +15,14 @@ interface StoreProps {
 type Props = OwnProps & StoreProps & DispatchProps;
 
 export class OptionComp extends Component<Props> {
-  render({ option, hoveredKey }: Props) {
+  render({ item, hoveredKey }: Props) {
     const classNames = [
       'tui-select-box-item',
-      hoveredKey === option.value ? 'tui-select-box-highlight' : '',
+      hoveredKey === item.value ? 'tui-select-box-highlight' : '',
     ];
     return (
-      <li class={classNames.join(' ')} tab-index="-1" data-value={option.value}>
-        {option.text}
+      <li class={classNames.join(' ')} tab-index="-1" data-value={item.value}>
+        {item.text}
       </li>
     );
   }

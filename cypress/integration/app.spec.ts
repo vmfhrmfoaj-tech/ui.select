@@ -4,13 +4,12 @@ before(() => {
 });
 
 describe('className', () => {
-  const options = [
-    { value: 'apple', text: 'Apple' },
-    { value: 'banana', text: 'Banana' },
-  ];
-
   beforeEach(() => {
-    cy.createComponent({ options });
+    const items = [
+      { value: 'apple', text: 'Apple' },
+      { value: 'banana', text: 'Banana' },
+    ];
+    cy.createComponent({ items });
   });
 
   const getChildEl = (selector: string) => cy.get(`div.tui-select-box > ${selector}`);

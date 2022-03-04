@@ -1,19 +1,19 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { OptionsType } from '@t/store';
+import { Data } from '@t/store/data';
 
 interface StoreProps {
-  options: OptionsType;
+  data: Data;
 }
 
 type Props = StoreProps & DispatchProps;
 
 export class HiddenSelectComp extends Component<Props> {
-  render({ options }: Props) {
+  render({ data }: Props) {
     return (
       <select class="tui-select-box-hidden" tabIndex={-1}>
-        {options.map((item, index) => (
+        {data.items.map((item, index) => (
           <option key={index} label={item.text} value={item.value}></option>
         ))}
       </select>
@@ -21,4 +21,4 @@ export class HiddenSelectComp extends Component<Props> {
   }
 }
 
-export const HiddenSelect = connect<StoreProps>(({ options }) => ({ options }))(HiddenSelectComp);
+export const HiddenSelect = connect<StoreProps>(({ data }) => ({ data }))(HiddenSelectComp);

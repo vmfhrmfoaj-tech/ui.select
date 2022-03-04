@@ -1,13 +1,13 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
-import { OptionsType } from '@t/store';
+import { Item } from '@t/store/data';
 import { Option } from './option';
 import { RenderState } from '@t/store/renderState';
 
 interface StoreProps {
   renderState: RenderState;
-  options: OptionsType;
+  items: Item[];
   isOpen: boolean;
 }
 
@@ -47,23 +47,23 @@ export class DropdownComp extends Component<Props> {
     }
   };
 
-  render({ isOpen, options }: Props) {
+  render({ isOpen, items }: Props) {
     return (
       <ul
         className={isOpen ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}
         onMouseOver={this.handleMouseover}
         onMouseOut={this.handleMouseout}
       >
-        {options.map((option, index) => (
-          <Option key={index} option={option} />
+        {items.map((item, index) => (
+          <Option key={index} item={item} />
         ))}
       </ul>
     );
   }
 }
 
-export const Dropdown = connect<StoreProps>(({ renderState, options }) => ({
+export const Dropdown = connect<StoreProps>(({ renderState, data }) => ({
   renderState,
-  options,
+  items: data.items,
   isOpen: renderState.isOpen,
 }))(DropdownComp);

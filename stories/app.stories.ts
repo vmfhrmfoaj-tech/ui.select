@@ -18,7 +18,7 @@ export const defaultStory = () => {
 
   new Component({
     el,
-    options: [
+    items: [
       { value: 'apple', text: 'Apple' },
       { value: 'banana', text: 'Banana' },
     ],
@@ -39,7 +39,7 @@ export const openStory = () => {
 
   new Component({
     el,
-    options: [
+    items: [
       { value: 'apple', text: 'Apple' },
       { value: 'banana', text: 'Banana' },
     ],
