@@ -19,6 +19,7 @@ export class OptionComp extends Component<Props> {
     const classNames = [
       'tui-select-box-item',
       hoveredKey === item.value ? 'tui-select-box-highlight' : '',
+      item.selected ? 'tui-select-box-selected' : '',
     ];
     return (
       <li class={classNames.join(' ')} tab-index="-1" data-value={item.value}>

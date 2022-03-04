@@ -8,4 +8,5 @@ export interface SelectOptions {
   el: HTMLElement;
   isOpen?: boolean;
   items?: Item[];
+  value?: string;
 }

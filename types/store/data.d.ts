@@ -9,6 +9,7 @@ export interface Item {
 }
 
 export interface Data {
+  value: string;
   items: Item[];
   readonly itemMap: Dictionary<Item>;
 }
