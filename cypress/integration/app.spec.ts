@@ -4,17 +4,21 @@ before(() => {
 });
 
 describe('className', () => {
-  beforeEach(() => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  beforeEach(() => {});
+
+  const createTestComponent = (option = {}) => {
     const items = [
       { value: 'apple', text: 'Apple' },
       { value: 'banana', text: 'Banana' },
     ];
-    cy.createComponent({ items });
-  });
+    cy.createComponent({ ...option, items });
+  };
 
   const getChildEl = (selector: string) => cy.get(`div.tui-select-box > ${selector}`);
 
   it('component initialize(default)', () => {
+    createTestComponent();
     const inputEl = getChildEl('div');
     inputEl.should('have.length', '1');
     inputEl.eq(0).should('have.class', 'tui-select-box-input');
@@ -30,6 +34,7 @@ describe('className', () => {
   });
 
   it('component initialize(array type data option)', () => {
+    createTestComponent();
     const itemLayers = getChildEl('ul').children('li');
     itemLayers.should('have.length', '2');
 
@@ -38,6 +43,7 @@ describe('className', () => {
   });
 
   it('open layer', () => {
+    createTestComponent();
     const inputEl = getChildEl('div').eq(0);
     inputEl.click();
 
@@ -48,6 +54,7 @@ describe('className', () => {
   });
 
   it('close layer', () => {
+    createTestComponent();
     const inputEl = getChildEl('div').eq(0);
     inputEl.click();
     inputEl.click();
@@ -59,6 +66,8 @@ describe('className', () => {
   });
 
   it('close layer when document click', () => {
+    createTestComponent();
+
     const inputEl = getChildEl('div').eq(0);
     inputEl.click();
 
@@ -71,6 +80,8 @@ describe('className', () => {
   });
 
   it('hover layer option', () => {
+    createTestComponent();
+
     const inputEl = getChildEl('div').eq(0);
     inputEl.click();
 
@@ -86,5 +97,26 @@ describe('className', () => {
 
     li2Element.trigger('mouseover');
     li2Element.should('have.class', 'tui-select-box-highlight');
+  });
+
+  it('isOpen option', () => {
+    createTestComponent({
+      isOpen: true,
+    });
+
+    const dropdown = getChildEl('ul').eq(0);
+
+    dropdown.should('have.class', 'tui-select-box-dropdown');
+  });
+
+  it('value option', () => {
+    createTestComponent({
+      isOpen: true,
+      value: 'banana',
+    });
+
+    const option = getChildEl('ul').eq(0).children('li').eq(1);
+
+    option.should('have.class', 'tui-select-box-selected');
   });
 });

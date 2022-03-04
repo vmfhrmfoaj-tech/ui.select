@@ -55,3 +55,26 @@ const openNote = `
 - isOpen option(boolean) : false(default) | true
 `;
 openStory.story = { parameters: { notes: openNote } };
+
+export const valueOptionStory = () => {
+  const el = createContainer();
+
+  new Component({
+    el,
+    items: [
+      { value: 'apple', text: 'Apple' },
+      { value: 'banana', text: 'Banana' },
+    ],
+    isOpen: true,
+    value: 'banana',
+  });
+
+  return el;
+};
+
+const valueOptionNote = `
+## Default SELECT BOX
+
+- value(string)
+`;
+valueOptionStory.story = { parameters: { notes: valueOptionNote } };
