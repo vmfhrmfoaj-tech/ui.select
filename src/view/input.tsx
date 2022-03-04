@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
+import { cls } from '../css/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OwnProps {}
@@ -17,7 +18,7 @@ export class InputComp extends Component<Props> {
   // public componentDidMount() {}
 
   render({ isOpen }: Props) {
-    const className = ['tui-select-box-input', isOpen ? 'tui-select-box-open' : ''].join(' ');
+    const className = [cls.INPUT, isOpen ? cls.OPEN : ''].join(' ');
 
     return (
       <div
@@ -27,8 +28,8 @@ export class InputComp extends Component<Props> {
         className={className}
         tabIndex={0}
       >
-        <p class="tui-select-box-placeholder">Please select an option.</p>
-        <span class="tui-select-box-icon">select</span>
+        <p class={cls.PLACEHOLDER}>Please select an option.</p>
+        <span class={cls.ICON}>select</span>
       </div>
     );
   }

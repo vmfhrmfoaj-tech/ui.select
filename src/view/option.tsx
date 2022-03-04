@@ -2,6 +2,7 @@ import { h, Component } from 'preact';
 import { connect } from './hoc';
 import { DispatchProps } from '../dispatch/create';
 import { Item } from '@t/store/data';
+import { cls } from '../css/constants';
 
 interface OwnProps {
   item: Item;
@@ -23,9 +24,9 @@ export class OptionComp extends Component<Props> {
 
   render({ item, hoveredKey }: Props) {
     const classNames = [
-      'tui-select-box-item',
-      hoveredKey === item.value ? 'tui-select-box-highlight' : '',
-      item.selected ? 'tui-select-box-selected' : '',
+      cls.ITEM,
+      hoveredKey === item.value ? cls.HIGHLIGHT : '',
+      item.selected ? cls.SELECTED : '',
     ];
     return (
       <li

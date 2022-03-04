@@ -6,6 +6,7 @@ import { Input } from './input';
 import { Dropdown } from './dropdown';
 import { HiddenSelect } from './hiddenselect';
 import { RenderState } from '@t/store/renderState';
+import { cls } from '../css/constants';
 
 interface OwnProps {
   rootElement: HTMLElement;
@@ -31,8 +32,8 @@ export class ContainerComp extends Component<Props> {
   private handleClick = (ev: MouseEvent) => {
     const target = ev.target as HTMLElement;
     const { renderState, dispatch } = this.props;
-    const isInputAreaClicked = this.isParentArea(target, '.tui-select-box-input');
-    const isDopdownAreaClicked = this.isParentArea(target, '.tui-select-box-dropdown');
+    const isInputAreaClicked = this.isParentArea(target, `.${cls.INPUT}`);
+    const isDopdownAreaClicked = this.isParentArea(target, `.${cls.DROPDOWN}`);
 
     if (isInputAreaClicked) {
       dispatch('setOpen', !renderState.isOpen);
@@ -48,7 +49,7 @@ export class ContainerComp extends Component<Props> {
   render() {
     return (
       <div
-        class="tui-select-box"
+        class={cls.SELECT_BOX}
         ref={(el) => {
           this.el = el;
         }}

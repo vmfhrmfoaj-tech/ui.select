@@ -1,4 +1,7 @@
 // app.spec.ts
+
+import { cls } from '../../src/css/constants';
+
 before(() => {
   cy.visit('/dist');
 });
@@ -15,22 +18,22 @@ describe('className', () => {
     cy.createComponent({ ...option, items });
   };
 
-  const getChildEl = (selector: string) => cy.get(`div.tui-select-box > ${selector}`);
+  const getChildEl = (selector: string) => cy.get(`div.${cls.SELECT_BOX} > ${selector}`);
 
   it('component initialize(default)', () => {
     createTestComponent();
     const inputEl = getChildEl('div');
     inputEl.should('have.length', '1');
-    inputEl.eq(0).should('have.class', 'tui-select-box-input');
+    inputEl.eq(0).should('have.class', cls.INPUT);
 
     const dropdown = getChildEl('ul');
     dropdown.should('have.length', '1');
-    dropdown.eq(0).should('have.class', 'tui-select-box-hidden');
-    dropdown.eq(0).should('not.have.class', 'tui-select-box-dropdown');
+    dropdown.eq(0).should('have.class', cls.HIDDEN);
+    dropdown.eq(0).should('not.have.class', cls.DROPDOWN);
 
     const select = getChildEl('select');
     select.should('have.length', '1');
-    select.eq(0).should('have.class', 'tui-select-box-hidden');
+    select.eq(0).should('have.class', cls.HIDDEN);
   });
 
   it('component initialize(array type data option)', () => {
@@ -49,8 +52,8 @@ describe('className', () => {
 
     const dropdown = getChildEl('ul').eq(0);
 
-    dropdown.should('have.class', 'tui-select-box-dropdown');
-    dropdown.should('not.have.class', 'tui-select-box-hidden');
+    dropdown.should('have.class', cls.DROPDOWN);
+    dropdown.should('not.have.class', cls.HIDDEN);
   });
 
   it('close layer', () => {
@@ -61,8 +64,8 @@ describe('className', () => {
 
     const dropdown = getChildEl('ul').eq(0);
 
-    dropdown.should('have.class', 'tui-select-box-hidden');
-    dropdown.should('not.have.class', 'tui-select-box-dropdown');
+    dropdown.should('have.class', cls.HIDDEN);
+    dropdown.should('not.have.class', cls.DROPDOWN);
   });
 
   it('close layer when document click', () => {
@@ -75,8 +78,8 @@ describe('className', () => {
 
     const dropdown = getChildEl('ul').eq(0);
 
-    dropdown.should('have.class', 'tui-select-box-hidden');
-    dropdown.should('not.have.class', 'tui-select-box-dropdown');
+    dropdown.should('have.class', cls.HIDDEN);
+    dropdown.should('not.have.class', cls.DROPDOWN);
   });
 
   it('hover layer option', () => {
@@ -87,16 +90,16 @@ describe('className', () => {
 
     const liElement = getChildEl('ul').children('li').eq(0);
 
-    liElement.should('have.class', 'tui-select-box-item');
-    liElement.should('not.have.class', 'tui-select-box-highlight');
+    liElement.should('have.class', cls.ITEM);
+    liElement.should('not.have.class', cls.HIGHLIGHT);
 
     liElement.trigger('mouseover');
-    liElement.should('have.class', 'tui-select-box-highlight');
+    liElement.should('have.class', cls.HIGHLIGHT);
 
     const li2Element = getChildEl('ul').children('li').eq(1);
 
     li2Element.trigger('mouseover');
-    li2Element.should('have.class', 'tui-select-box-highlight');
+    li2Element.should('have.class', cls.HIGHLIGHT);
   });
 
   it('isOpen option', () => {
@@ -106,7 +109,7 @@ describe('className', () => {
 
     const dropdown = getChildEl('ul').eq(0);
 
-    dropdown.should('have.class', 'tui-select-box-dropdown');
+    dropdown.should('have.class', cls.DROPDOWN);
   });
 
   it('value option', () => {
@@ -117,7 +120,7 @@ describe('className', () => {
 
     const option = getChildEl('ul').eq(0).children('li').eq(1);
 
-    option.should('have.class', 'tui-select-box-selected');
+    option.should('have.class', cls.SELECTED);
   });
 
   it('value option', () => {
@@ -128,9 +131,9 @@ describe('className', () => {
 
     const option1 = getChildEl('ul').eq(0).children('li').eq(0);
     option1.click();
-    option1.should('have.class', 'tui-select-box-selected');
+    option1.should('have.class', cls.SELECTED);
 
     const option2 = getChildEl('ul').eq(0).children('li').eq(1);
-    option2.should('not.have.class', 'tui-select-box-selected');
+    option2.should('not.have.class', cls.SELECTED);
   });
 });
