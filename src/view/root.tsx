@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Store } from '@t/store';
-import { Dispatch } from '../dispatch/create';
+import { Dispatch } from '../dispatch';
 import { Container } from './container';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
+import { DispatchProps } from '../dispatch';
 import { Input } from './input';
 import { Dropdown } from './dropdown';
 import { HiddenSelect } from './hiddenselect';

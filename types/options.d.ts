@@ -1,4 +1,4 @@
-import { Item } from './store/data';
+import { ItemData } from './store/data';
 
 export interface Dictionary<T> {
   [index: string]: T;
@@ -7,6 +7,6 @@ export interface Dictionary<T> {
 export interface SelectOptions {
   el: HTMLElement;
   autofocus?: boolean;
-  items?: Item[];
+  items?: ItemData[];
   value?: string;
 }

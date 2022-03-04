@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
+import { DispatchProps } from '../dispatch';
 import { cls } from '../css/constants';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

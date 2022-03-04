@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
+import { DispatchProps } from '../dispatch';
 import { ItemData } from '@t/store/data';
 import { Option } from './option';
 import { cls } from '../css/constants';

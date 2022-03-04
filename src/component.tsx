@@ -2,8 +2,8 @@ import { h, render } from 'preact';
 import Select from '@t/index';
 import { Root } from './view/root';
 import { Store } from '../types/store';
-import { createStore } from './store/create';
-import { Dispatch, createDispatcher } from './dispatch/create';
+import { createStore } from './store';
+import { Dispatch, createDispatcher } from './dispatch';
 
 export default class implements Select {
   el: HTMLElement;
