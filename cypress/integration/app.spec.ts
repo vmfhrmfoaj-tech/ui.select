@@ -119,4 +119,18 @@ describe('className', () => {
 
     option.should('have.class', 'tui-select-box-selected');
   });
+
+  it('value option', () => {
+    createTestComponent({
+      isOpen: true,
+      value: 'banana',
+    });
+
+    const option1 = getChildEl('ul').eq(0).children('li').eq(0);
+    option1.click();
+    option1.should('have.class', 'tui-select-box-selected');
+
+    const option2 = getChildEl('ul').eq(0).children('li').eq(1);
+    option2.should('not.have.class', 'tui-select-box-selected');
+  });
 });

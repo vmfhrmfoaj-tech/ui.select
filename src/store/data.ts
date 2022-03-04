@@ -7,14 +7,12 @@ function createItems(option: SelectOptions) {
   const newItems = (option.items ?? ([] as Item[])).map(({ value, text, selected = false }) => {
     const _selected = option.value ? option.value === value : selected;
 
-    return {
+    return observable<Item>({
       value,
       text,
       selected: _selected,
-    };
+    });
   });
-
-  console.log(newItems);
 
   return newItems;
 }
