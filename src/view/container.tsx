@@ -3,7 +3,7 @@ import { connect } from './hoc';
 import { DispatchProps } from '../dispatch';
 import { Input } from './input';
 import { Dropdown } from './dropdown';
-import { HiddenSelect } from './hiddenselect';
+import { NativeSelect } from './native/select';
 import { cls } from '../css/constants';
 import { ComponentId } from '@t/store';
 
@@ -55,7 +55,7 @@ export class ContainerComp extends Component<Props> {
       >
         <Input />
         <Dropdown />
-        <HiddenSelect />
+        <NativeSelect />
       </div>
     );
   }
