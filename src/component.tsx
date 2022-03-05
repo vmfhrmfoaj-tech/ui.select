@@ -36,4 +36,8 @@ export default class implements Select {
   public setValue(value: string): void {
     this.dispatch('setValue', value);
   }
+
+  public getValue(): string {
+    return this.store.data.value;
+  }
 }

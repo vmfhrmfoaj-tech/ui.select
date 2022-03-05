@@ -10,6 +10,8 @@ declare namespace ui {
     public close(): void;
 
     public setValue(value: string): void;
+
+    public getValue(): string;
   }
 }
 

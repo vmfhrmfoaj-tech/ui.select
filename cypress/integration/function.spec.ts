@@ -31,4 +31,14 @@ describe('user function', () => {
     cy.getItemByIndex(0).should('have.class', cls.SELECTED);
     cy.getItemByIndex(1).should('not.have.class', cls.SELECTED);
   });
+
+  it('getValue', () => {
+    createTestComponent({ autofocus: true });
+
+    cy.getInstance().invoke('setValue', 'banana');
+    cy.getInstance().invoke('getValue').should('eq', 'banana');
+
+    cy.getInstance().invoke('setValue', 'apple');
+    cy.getInstance().invoke('getValue').should('eq', 'apple');
+  });
 });
