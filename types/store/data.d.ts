@@ -2,13 +2,16 @@ import { Dictionary } from '@t/options';
 
 export const EMPTY_VALUE = '';
 
-export interface Item {
+export interface ItemData {
+  index: number;
   value: string;
-  text: string;
+  label: string;
   selected: boolean;
+  disabled: boolean;
 }
 
 export interface Data {
-  items: Item[];
-  readonly itemMap: Dictionary<Item>;
+  value: string;
+  items: ItemData[];
+  readonly itemMap: Dictionary<ItemData>;
 }

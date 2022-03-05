@@ -1,12 +1,17 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
+import { DispatchProps } from '../dispatch';
+import { cls } from '../css/constants';
+import { Data } from '@t/store/data';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface OwnProps {}
 
 interface StoreProps {
-  isOpen: boolean;
+  opened: boolean;
+  placeHolder: string;
+  value: string;
+  data: Data;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -16,8 +21,18 @@ export class InputComp extends Component<Props> {
 
   // public componentDidMount() {}
 
-  render({ isOpen }: Props) {
-    const className = ['tui-select-box-input', isOpen ? 'tui-select-box-open' : ''].join(' ');
+  get getPlaceHolderText() {
+    const { placeHolder, data, value } = this.props;
+
+    if (!value) {
+      return placeHolder;
+    }
+
+    return data.items.find((m) => m.value === value)?.label || value;
+  }
+
+  render({ opened }: Props) {
+    const className = [cls.INPUT, opened ? cls.OPEN : ''].join(' ');
 
     return (
       <div
@@ -27,13 +42,16 @@ export class InputComp extends Component<Props> {
         className={className}
         tabIndex={0}
       >
-        <p class="tui-select-box-placeholder">Please select an option.</p>
-        <span class="tui-select-box-icon">select</span>
+        <p class={cls.PLACEHOLDER}>{this.getPlaceHolderText}</p>
+        <span class={cls.ICON}>select</span>
       </div>
     );
   }
 }
 
-export const Input = connect<StoreProps, OwnProps>(({ renderState }) => ({
-  isOpen: renderState.isOpen,
+export const Input = connect<StoreProps, OwnProps>(({ opened, placeHolder, data }) => ({
+  opened,
+  placeHolder,
+  data,
+  value: data.value,
 }))(InputComp);

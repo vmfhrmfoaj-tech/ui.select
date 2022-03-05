@@ -1,11 +1,11 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
-import { ComponentId } from '@t/store';
+import { DispatchProps } from '../dispatch';
 import { Input } from './input';
 import { Dropdown } from './dropdown';
-import { HiddenSelect } from './hiddenselect';
-import { RenderState } from '@t/store/renderState';
+import { NativeSelect } from './native/select';
+import { cls } from '../css/constants';
+import { ComponentId } from '@t/store';
 
 interface OwnProps {
   rootElement: HTMLElement;
@@ -13,7 +13,7 @@ interface OwnProps {
 
 interface StoreProps {
   id: ComponentId;
-  renderState: RenderState;
+  opened: boolean;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -30,12 +30,12 @@ export class ContainerComp extends Component<Props> {
 
   private handleClick = (ev: MouseEvent) => {
     const target = ev.target as HTMLElement;
-    const { renderState, dispatch } = this.props;
-    const isInputAreaClicked = this.isParentArea(target, '.tui-select-box-input');
-    const isDopdownAreaClicked = this.isParentArea(target, '.tui-select-box-dropdown');
+    const { opened, dispatch } = this.props;
+    const isInputAreaClicked = this.isParentArea(target, `.${cls.INPUT}`);
+    const isDopdownAreaClicked = this.isParentArea(target, `.${cls.DROPDOWN}`);
 
     if (isInputAreaClicked) {
-      dispatch('setOpen', !renderState.isOpen);
+      dispatch('setOpen', !opened);
     } else if (!isInputAreaClicked && !isDopdownAreaClicked && open) {
       dispatch('setOpen', false);
     }
@@ -48,20 +48,20 @@ export class ContainerComp extends Component<Props> {
   render() {
     return (
       <div
-        class="tui-select-box"
+        class={cls.SELECT_BOX}
         ref={(el) => {
           this.el = el;
         }}
       >
         <Input />
         <Dropdown />
-        <HiddenSelect />
+        <NativeSelect />
       </div>
     );
   }
 }
 
-export const Container = connect<StoreProps, OwnProps>(({ id, renderState }) => ({
+export const Container = connect<StoreProps, OwnProps>(({ id, opened }) => ({
   id,
-  renderState,
+  opened,
 }))(ContainerComp);

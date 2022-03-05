@@ -15,9 +15,12 @@
       const instance = new ui.Select({
         el: document.getElementById('select-box'),
         items: [
-          { value: 'apple', text: 'Apple' },
-          { value: 'banana', text: 'Banana' },
-        ]
+          { value: 'apple', label: 'Apple', selected: true },
+          { value: 'banana', label: 'Banana' },
+          { value: 'banana1', label: 'Banana1', disabled: true },
+        ],
+        autofocus: true,
+        // value: 'banana'
       });
     </script>
   </body>

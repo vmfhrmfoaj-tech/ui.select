@@ -1,14 +1,13 @@
 import { h, Component } from 'preact';
 import { connect } from './hoc';
-import { DispatchProps } from '../dispatch/create';
-import { Item } from '@t/store/data';
+import { DispatchProps } from '../dispatch';
+import { ItemData } from '@t/store/data';
 import { Option } from './option';
-import { RenderState } from '@t/store/renderState';
+import { cls } from '../css/constants';
 
 interface StoreProps {
-  renderState: RenderState;
-  items: Item[];
-  isOpen: boolean;
+  items: ItemData[];
+  opened: boolean;
 }
 
 type Props = StoreProps & DispatchProps;
@@ -39,18 +38,14 @@ export class DropdownComp extends Component<Props> {
   };
 
   private handleMouseout = () => {
-    const { dispatch, renderState } = this.props;
-    const { hoveredKey } = renderState;
-
-    if (hoveredKey !== null) {
-      dispatch('setHoveredKey', null);
-    }
+    const { dispatch } = this.props;
+    dispatch('setHoveredKey', null);
   };
 
-  render({ isOpen, items }: Props) {
+  render({ opened, items }: Props) {
     return (
       <ul
-        className={isOpen ? 'tui-select-box-dropdown' : 'tui-select-box-hidden'}
+        className={opened ? cls.DROPDOWN : cls.HIDDEN}
         onMouseOver={this.handleMouseover}
         onMouseOut={this.handleMouseout}
       >
@@ -62,8 +57,7 @@ export class DropdownComp extends Component<Props> {
   }
 }
 
-export const Dropdown = connect<StoreProps>(({ renderState, data }) => ({
-  renderState,
+export const Dropdown = connect<StoreProps>(({ opened, data }) => ({
   items: data.items,
-  isOpen: renderState.isOpen,
+  opened,
 }))(DropdownComp);

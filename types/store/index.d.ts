@@ -1,10 +1,11 @@
 import { Data } from './data';
-import { RenderState } from './renderState';
 
 export type ComponentId = number;
 
 export interface Store {
   readonly id: ComponentId;
-  renderState: RenderState;
+  opened: boolean;
+  placeHolder: string;
   data: Data;
+  hoveredKey: string | null;
 }

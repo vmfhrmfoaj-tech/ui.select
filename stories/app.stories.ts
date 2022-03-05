@@ -13,15 +13,17 @@ function createContainer(): HTMLElement {
   return el;
 }
 
+const ITEMS = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+];
+
 export const defaultStory = () => {
   const el = createContainer();
 
   new Component({
     el,
-    items: [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
-    ],
+    items: ITEMS,
   });
 
   return el;
@@ -39,11 +41,8 @@ export const openStory = () => {
 
   new Component({
     el,
-    items: [
-      { value: 'apple', text: 'Apple' },
-      { value: 'banana', text: 'Banana' },
-    ],
-    isOpen: true,
+    items: ITEMS,
+    autofocus: true,
   });
 
   return el;
@@ -52,6 +51,26 @@ export const openStory = () => {
 const openNote = `
 ## Default SELECT BOX
 
-- isOpen option(boolean) : false(default) | true
+- autofocus option(boolean) : false(default) | true
 `;
 openStory.story = { parameters: { notes: openNote } };
+
+export const valueOptionStory = () => {
+  const el = createContainer();
+
+  new Component({
+    el,
+    items: ITEMS,
+    autofocus: true,
+    value: 'banana',
+  });
+
+  return el;
+};
+
+const valueOptionNote = `
+## Default SELECT BOX
+
+- value(string)
+`;
+valueOptionStory.story = { parameters: { notes: valueOptionNote } };

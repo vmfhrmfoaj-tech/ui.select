@@ -1,8 +1,8 @@
 import { Store } from '@t/store';
-import * as renderState from './renderState';
+import * as actions from './actions';
 
 const dispatchMap = {
-  ...renderState,
+  ...actions,
 };
 
 type DispatchMap = typeof dispatchMap;
