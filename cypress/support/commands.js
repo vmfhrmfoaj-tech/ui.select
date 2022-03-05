@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { cls } from '../../src/css/constants';
+
 Cypress.Commands.add('createComponent', (options, containerStyle = {}, parentEl = null) => {
   cy.document().then((doc) => {
     doc.body.innerHTML = '';
@@ -53,3 +55,7 @@ Cypress.Commands.add('createComponent', (options, containerStyle = {}, parentEl 
 });
 
 Cypress.Commands.add('getInstance', () => cy.window().its('component'));
+
+Cypress.Commands.add('getItemByIndex', (index) => {
+  return cy.get(`div.${cls.SELECT_BOX} > ul > li`).eq(index);
+});

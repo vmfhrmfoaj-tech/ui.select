@@ -5,6 +5,8 @@ declare namespace Cypress {
     createComponent(gridOptions: any, elementStyles?: any, parentEl?: HTMLElement): Chainable<any>;
 
     getInstance(): Chainable<any>;
+
+    getItemByIndex(index: number): Chainable<any>;
   }
 }
 
