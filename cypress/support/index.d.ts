@@ -3,6 +3,8 @@
 declare namespace Cypress {
   interface Chainable<Subject> {
     createComponent(gridOptions: any, elementStyles?: any, parentEl?: HTMLElement): Chainable<any>;
+
+    getInstance(): Chainable<any>;
   }
 }
 

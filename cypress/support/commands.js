@@ -51,3 +51,5 @@ Cypress.Commands.add('createComponent', (options, containerStyle = {}, parentEl 
     });
   });
 });
+
+Cypress.Commands.add('getInstance', () => cy.window().its('component'));

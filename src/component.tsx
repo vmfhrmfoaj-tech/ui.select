@@ -32,4 +32,8 @@ export default class implements Select {
   public close(): void {
     this.dispatch('setOpen', false);
   }
+
+  public setValue(value: string): void {
+    this.dispatch('setValue', value);
+  }
 }
