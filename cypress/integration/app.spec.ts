@@ -14,6 +14,7 @@ describe('className', () => {
     const items = [
       { value: 'apple', label: 'Apple' },
       { value: 'banana', label: 'Banana' },
+      { value: 'orange', label: 'Orange', disabled: true },
     ];
     cy.createComponent({ ...option, items });
   };
@@ -39,13 +40,26 @@ describe('className', () => {
   it('component initialize(array type data option)', () => {
     createTestComponent();
     const itemLayers = getChildEl('ul').children('li');
-    itemLayers.should('have.length', '2');
+    itemLayers.should('have.length', '3');
 
     getChildEl('ul').children('li').eq(0).should('have.text', 'Apple');
     getChildEl('ul').children('li').eq(1).should('have.text', 'Banana');
+    getChildEl('ul').children('li').eq(2).should('have.text', 'Orange');
 
     const items = getChildEl('select').children('option');
-    items.should('have.length', '2');
+    items.should('have.length', '3');
+  });
+
+  it('component initialize(array type data option) disabled', () => {
+    createTestComponent();
+    const itemLayers = getChildEl('ul').children('li');
+    itemLayers.should('have.length', '3');
+
+    getChildEl('ul').children('li').eq(2).should('have.class', 'ui-select-box-disabled');
+
+    const items = getChildEl('select').children('option');
+    items.should('have.length', '3');
+    getChildEl('select').children('option').eq(2).should('have.attr', 'disabled');
   });
 
   it('open layer', () => {
