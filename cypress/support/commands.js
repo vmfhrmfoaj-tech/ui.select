@@ -56,6 +56,12 @@ Cypress.Commands.add('createComponent', (options, containerStyle = {}, parentEl 
 
 Cypress.Commands.add('getInstance', () => cy.window().its('component'));
 
-Cypress.Commands.add('getItemByIndex', (index) => {
-  return cy.get(`div.${cls.SELECT_BOX} > ul > li`).eq(index);
-});
+const getChildEl = (selector) => cy.get(`div.${cls.SELECT_BOX} > ${selector}`);
+
+Cypress.Commands.add('getInputEl', () => getChildEl('div'));
+
+Cypress.Commands.add('getDropdownEl', () => getChildEl('ul'));
+
+Cypress.Commands.add('getNativeEl', () => getChildEl('select'));
+
+Cypress.Commands.add('getItemByIndex', (index) => getChildEl('ul').children('li').eq(index));

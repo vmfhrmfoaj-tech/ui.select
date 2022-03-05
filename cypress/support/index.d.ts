@@ -6,6 +6,12 @@ declare namespace Cypress {
 
     getInstance(): Chainable<any>;
 
+    getInputEl(): Chainable<any>;
+
+    getDropdownEl(): Chainable<any>;
+
+    getNativeEl(): Chainable<any>;
+
     getItemByIndex(index: number): Chainable<any>;
   }
 }
