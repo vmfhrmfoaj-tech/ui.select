@@ -60,6 +60,8 @@ const getChildEl = (selector) => cy.get(`div.${cls.SELECT_BOX} > ${selector}`);
 
 Cypress.Commands.add('getInputEl', () => getChildEl('div'));
 
+Cypress.Commands.add('getPlaceHolderEl', () => getChildEl('div').children(`p.${cls.PLACEHOLDER}`));
+
 Cypress.Commands.add('getDropdownEl', () => getChildEl('ul'));
 
 Cypress.Commands.add('getNativeEl', () => getChildEl('select'));

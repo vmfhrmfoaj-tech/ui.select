@@ -8,6 +8,8 @@ declare namespace Cypress {
 
     getInputEl(): Chainable<any>;
 
+    getPlaceHolderEl(): Chainable<any>;
+
     getDropdownEl(): Chainable<any>;
 
     getNativeEl(): Chainable<any>;

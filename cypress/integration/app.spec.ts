@@ -152,4 +152,34 @@ describe('className', () => {
     const option2 = cy.getItemByIndex(1);
     option2.should('not.have.class', cls.SELECTED);
   });
+
+  it('placeHolder (default)', () => {
+    const placeHolderText = 'Please select an option.';
+    createTestComponent({
+      autofocus: true,
+    });
+
+    cy.getPlaceHolderEl().should('have.text', placeHolderText);
+  });
+
+  it('placeHolder', () => {
+    const placeHolderText = ':::choice:::';
+    createTestComponent({
+      autofocus: true,
+      placeHolder: placeHolderText,
+    });
+
+    cy.getPlaceHolderEl().should('have.text', placeHolderText);
+
+    cy.getInstance().invoke('setValue', 'banana');
+    cy.getPlaceHolderEl().should('have.text', 'Banana');
+
+    // disabled
+    cy.getInstance().invoke('setValue', 'orange');
+    cy.getPlaceHolderEl().should('have.text', 'Orange');
+
+    // wrong value
+    cy.getInstance().invoke('setValue', 'wrong value');
+    cy.getPlaceHolderEl().should('have.text', 'wrong value');
+  });
 });

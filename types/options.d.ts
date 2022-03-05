@@ -9,4 +9,5 @@ export interface SelectOptions {
   autofocus?: boolean;
   items?: ItemData[];
   value?: string;
+  placeHolder?: string;
 }

@@ -5,6 +5,7 @@ import { create as createOptions } from './data';
 
 export function createStore(id: number, options: SelectOptions): Store {
   const hoveredKey = null;
+  const placeHolder = options.placeHolder ?? 'Please select an option.';
   const opened = options.autofocus ?? false;
   const data = createOptions(options);
 
@@ -13,6 +14,7 @@ export function createStore(id: number, options: SelectOptions): Store {
     data,
     opened,
     hoveredKey,
+    placeHolder,
   });
 
   /*
